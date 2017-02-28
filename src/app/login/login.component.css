@@ -2,8 +2,6 @@ ul {
   margin-bottom: 10px;
 }
 
-.vcenter {
-  display: inline-block;
-  vertical-align: middle;
-  float: none;
+button {
+  margin: 5px;
 }

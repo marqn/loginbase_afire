@@ -15,22 +15,27 @@
                 <form>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    <input type="email" class="form-control" [(ngModel)]="login_email" name="login_email" placeholder="Email">
                   </div>
                   <div class="form-groupgit status">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" [(ngModel)]="login_password" name="login_password" placeholder="Password">
                   </div>
-                  <button type="submit" style="margin-top:10px" class="btn btn-default">Zaloguj się</button>
+                  <button (click)="manualLogin()" class="btn btn-default">Zaloguj się</button>
+                  <button (click)="onLogout()" *ngIf="isAuth()" class="btn btn-danger">Logout</button>
                 </form>
               </td>
               <td class="col-sm-6 right" align="center">
                 <button class="btn btn-lg btn-primary">Facebook</button>
                 <br>
-                <button class="btn btn-lg btn-danger">Google</button>
+                <button class="btn btn-lg btn-danger" (click)="googleLogin()">Google</button>
+                <br>
               </td>
             </tr>
           </table>
+          <div class="col-sm-12 " align="center">
+            <a data-toggle="tab" class="btn btn-default" href="#passwordRemind">Przypominj hasło</a>
+          </div>
         </div>
 
         <div id="signin" class="tab-pane fade">
@@ -61,6 +66,47 @@
               </td>
             </tr>
           </table>
+          <div class="col-sm-12 " align="center">
+            <button class="btn btn-default" data-toggle="modal" data-target="#myModal">Zobacz regulamin</button>
+          </div>
+        </div>
+
+        <div id="passwordRemind" class="tab-pane fade">
+          <form>
+            <div class="form-group">
+              <label>Podaj email do wysłania hasła:</label>
+              <input type="email" class="form-control" placeholder="e-mail"/>
+            </div>
+            <a data-toggle="tab" class="btn btn-default" href='#login'>Wyślij</a>
+            <a data-toggle="tab" class="btn btn-default" href='#login'>Powrót</a>
+          </form>
+        </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Regulamin</h4>
+              </div>
+              <div class="modal-body">
+                Treść regulaminu pracy określa art. 1041 K.p. Stanowi on, że regulamin pracy, określając prawa i obowiązki pracodawcy i pracowników związane z porządkiem w zakładzie pracy, powinien ustalać m.in.:
+
+                organizację pracy, warunki przebywania na terenie zakładu pracy w czasie pracy i po jej zakończeniu, wyposażenie pracowników w narzędzia i materiały, a także w odzież i obuwie robocze oraz w środki ochrony indywidualnej i higieny osobistej,
+
+                systemy i rozkłady czasu pracy oraz przyjęte okresy rozliczeniowe czasu pracy, porę nocną,
+
+                termin, miejsce, czas i częstotliwość wypłaty wynagrodzenia,
+
+                obowiązki dotyczące bezpieczeństwa i higieny pracy oraz ochrony przeciwpożarowej, w tym także sposób informowania pracowników o ryzyku zawodowym, które wiąże się z wykonywaną pracą,
+
+                przyjęty u danego pracodawcy sposób potwierdzania przez pracowników przybycia i obecności w pracy oraz usprawiedliwiania nieobecności w pracy.
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
