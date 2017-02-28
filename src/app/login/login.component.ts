@@ -35,8 +35,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         console.log('jest zalogowany');
       })
       .catch(err => {
-        console.log(err.message);
-        this.messageAlert = err.message;
+        this.createAlert(err.message);
       });
   }
 
@@ -46,8 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         console.log('jest zalogowany');
       })
       .catch(err => {
-        console.log(err.message);
-        this.messageAlert = err.message;
+        this.createAlert(err.message);
       });
   }
 
@@ -66,4 +64,18 @@ export class LoginComponent implements OnInit, OnDestroy {
   isAuth() {
     return this.authService.isAuthenticated();
   }
+
+  closeAlert() {
+    this.messageAlert = null;
+  }
+
+  sendPassword() {
+    return this.authService.sendPassword();
+  }
+
+  private createAlert(message:string) {
+    console.log(message);
+    this.messageAlert = message;
+  }
+  
 }

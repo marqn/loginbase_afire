@@ -2,8 +2,8 @@
 
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div *ngIf="messageAlert" class="alert alert-danger alert-dismissible" role="alert" id="loginAlert">
+        <button type="button" class="close" (click)="closeAlert()"><span aria-hidden="true">&times;</span></button>
         <strong>Warning!</strong> {{messageAlert}}
       </div>
     </div>
@@ -87,7 +87,7 @@
               <label>Podaj email do wysłania hasła:</label>
               <input type="email" class="form-control" placeholder="e-mail"/>
             </div>
-            <a data-toggle="tab" class="btn btn-default" href='#login'>Wyślij</a>
+            <button (click)="sendPassword()" class="btn btn-default" >Wyślij</button>
             <a data-toggle="tab" class="btn btn-default" href='#login'>Powrót</a>
           </form>
         </div>

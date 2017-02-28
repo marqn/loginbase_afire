@@ -33,4 +33,8 @@ export class AuthService {
   isAuthenticated():Observable<any> {
     return this.auth; //auth is already an observable
   }
+
+  sendPassword() {
+    // return this.
+  }
 }
