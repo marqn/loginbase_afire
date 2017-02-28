@@ -10,8 +10,11 @@ import {AuthService} from "../auth.service";
 export class LoginComponent implements OnInit, OnDestroy {
   private subscription:Subscription;
 
+  public messageAlert:string;
   public login_email:string;
   public login_password:string;
+  public sign_email:string;
+  public sign_password:string;
 
   constructor(private authService:AuthService) {
   }
@@ -33,11 +36,27 @@ export class LoginComponent implements OnInit, OnDestroy {
       })
       .catch(err => {
         console.log(err.message);
+        this.messageAlert = err.message;
       });
   }
-  
+
+  public manualSignIn():void {
+    this.authService.signin(this.sign_email, this.sign_password)
+      .then(result => {
+        console.log('jest zalogowany');
+      })
+      .catch(err => {
+        console.log(err.message);
+        this.messageAlert = err.message;
+      });
+  }
+
   public googleLogin() {
     this.authService.googleLogin();
+  }
+
+  public fbLogin() {
+    console.log('fb login not implemented yet');
   }
 
   onLogout() {

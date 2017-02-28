@@ -9,10 +9,15 @@ export class AuthService {
   }
 
   loginUser(email, password) {
-    var creds:any = {email: email, password: password};
+    var credentials:any = {email: email, password: password};
     var provider:any = {provider: AuthProviders.Password, method: AuthMethods.Password};
 
-    return this.auth.login(creds, provider);
+    return this.auth.login(credentials, provider);
+  }
+
+  signin(email, password) {
+    var credentials:any = {email: email, password: password};
+    return this.auth.createUser(credentials);
   }
 
   googleLogin() {
