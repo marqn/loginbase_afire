@@ -11,8 +11,11 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <li class="active">
+      <li *ngIf="!isAuth()" class="active">
         <a class="btn" routerLink="loginpage">Login</a>
+      </li>
+      <li *ngIf="isAuth()" class="active">
+        <a class="btn" (click)="onLogout()">Logout</a>
       </li>
     </ul>
   </div>

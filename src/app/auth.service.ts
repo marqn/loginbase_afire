@@ -1,11 +1,12 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 import {AngularFireAuth, AuthProviders, AuthMethods} from "angularfire2/index";
+import {AngularFire} from "angularfire2/angularfire2";
 
 @Injectable()
 export class AuthService {
 
-  constructor(private auth:AngularFireAuth/*, private router:Router*/) {
+  constructor(private af:AngularFire, private auth:AngularFireAuth/*, private router:Router*/) {
   }
 
   loginUser(email, password) {

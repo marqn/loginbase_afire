@@ -9,24 +9,27 @@ import {AuthService} from "../auth.service";
 })
 export class LoginComponent implements OnInit, OnDestroy {
   private subscription:Subscription;
+  public hasAuth:any;
 
   public messageAlert:string;
   public login_email:string;
   public login_password:string;
   public sign_email:string;
   public sign_password:string;
+  
 
   constructor(private authService:AuthService) {
   }
 
   ngOnInit() {
-    this.subscription = this.authService.isAuthenticated().subscribe(authResp =>
-      console.log('isAuthenticated: ', authResp)
+    this.subscription = this.authService.isAuthenticated().subscribe(authResp => {
+        // console.log('isAuthenticated: ', authResp);
+        this.hasAuth = authResp;
+      }
     );
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
   public manualLogin():void {
@@ -57,14 +60,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     console.log('fb login not implemented yet');
   }
 
-  onLogout() {
-    this.authService.logout();
-  }
-
-  isAuth() {
-    return this.authService.isAuthenticated();
-  }
-
   closeAlert() {
     this.messageAlert = null;
   }
@@ -73,9 +68,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     return this.authService.sendPassword();
   }
 
+  isAuth() {
+    return this.hasAuth;
+  }
+
+
   private createAlert(message:string) {
-    console.log(message);
     this.messageAlert = message;
   }
-  
+
 }

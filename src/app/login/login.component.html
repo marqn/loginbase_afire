@@ -17,6 +17,8 @@
         <li role="presentation"><a data-toggle="tab" href="#signin">Załóż konto</a></li>
       </ul>
 
+      <hr>
+
       <div class="tab-content">
         <div id="login" class="tab-pane fade in active">
           <table>
@@ -32,7 +34,6 @@
                     <input type="password" class="form-control" [(ngModel)]="login_password" name="login_password" placeholder="Password">
                   </div>
                   <button (click)="manualLogin()" class="btn btn-default">Zaloguj się</button>
-                  <button (click)="onLogout()" *ngIf="isAuth()" class="btn btn-danger">Logout</button>
                 </form>
               </td>
               <td class="col-sm-6 right" align="center">
@@ -118,7 +119,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
