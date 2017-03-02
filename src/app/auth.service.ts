@@ -2,11 +2,12 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 import {AngularFireAuth, AuthProviders, AuthMethods} from "angularfire2/index";
 import {AngularFire} from "angularfire2/angularfire2";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthService {
 
-  constructor(private af:AngularFire, private auth:AngularFireAuth/*, private router:Router*/) {
+  constructor(private af:AngularFire, private auth:AngularFireAuth, private router:Router) {
   }
 
   loginUser(email, password) {
@@ -28,7 +29,7 @@ export class AuthService {
 
   logout() {
     this.auth.logout();
-    // this.router.navigate(['/']);
+    this.router.navigate(['loginpage']);
   }
 
   isAuthenticated():Observable<any> {

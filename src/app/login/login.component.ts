@@ -1,6 +1,7 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -16,15 +17,17 @@ export class LoginComponent implements OnInit, OnDestroy {
   public login_password:string;
   public sign_email:string;
   public sign_password:string;
-  
 
-  constructor(private authService:AuthService) {
+
+  constructor(private authService:AuthService, private router:Router) {
   }
 
   ngOnInit() {
     this.subscription = this.authService.isAuthenticated().subscribe(authResp => {
-        // console.log('isAuthenticated: ', authResp);
+        console.log('login component: ', authResp);
         this.hasAuth = authResp;
+        if (!authResp)
+          this.router.navigate(['loginpage']);
       }
     );
   }
@@ -35,7 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public manualLogin():void {
     this.authService.loginUser(this.login_email, this.login_password)
       .then(result => {
-        console.log('jest zalogowany');
+        this.router.navigate(['startpage']);
       })
       .catch(err => {
         this.createAlert(err.message);
@@ -45,7 +48,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public manualSignIn():void {
     this.authService.signin(this.sign_email, this.sign_password)
       .then(result => {
-        console.log('jest zalogowany');
+        this.router.navigate(['startpage']);
       })
       .catch(err => {
         this.createAlert(err.message);

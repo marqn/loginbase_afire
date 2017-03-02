@@ -7,12 +7,14 @@ import {AppComponent} from "./app.component";
 import {LoginComponent} from "./login/login.component";
 import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
 import {AuthService} from "./auth.service";
+import {StartGameComponent} from "./start-game/start-game.component";
+import { GameComponent } from './game/game.component';
 
 const routes:Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'startpage', component: LoginComponent},
-  {path: 'game', component: LoginComponent}
+  {path: '', component: StartGameComponent},
+  {path: 'loginpage', component: LoginComponent},
+  {path: 'startpage', component: StartGameComponent},
+  {path: 'game', component: GameComponent}
 ];
 
 
@@ -33,7 +35,9 @@ const myFirebaseAuthConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    StartGameComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
