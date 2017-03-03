@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 import {AuthService} from "./auth.service";
+declare var $:any;
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,14 @@ export class AppComponent implements OnInit {
         this.hasAuth = authResp;
       }
     );
+
+    var $row = $('#navbar-logo');
+    $row.on('mouseover', function () {
+      $row.fadeOut(1000);
+    });
+    $row.on('mouseout', function () {
+      $row.fadeIn(1000);
+    });
   }
 
   isAuth() {
@@ -28,5 +37,5 @@ export class AppComponent implements OnInit {
   onLogout() {
     this.authService.logout();
   }
-  
+
 }
