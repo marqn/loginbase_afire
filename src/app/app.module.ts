@@ -7,7 +7,7 @@ import {AppComponent} from "./app.component";
 import {LoginComponent} from "./login/login.component";
 import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
 import {AuthService} from "./auth.service";
-import {StartGameComponent} from "./start-game/start-game.component";
+import {StartGameComponent} from "./start-game/start.component";
 import { GameComponent } from './game/game.component';
 
 const routes:Routes = [

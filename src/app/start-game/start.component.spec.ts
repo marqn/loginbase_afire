@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { StartGameComponent } from './start-game.component';
+import { StartGameComponent } from './start.component.ts';
 
 describe('StartGameComponent', () => {
   let component: StartGameComponent;

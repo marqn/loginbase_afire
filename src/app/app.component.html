@@ -2,18 +2,15 @@
   <div class="collapse navbar-collapse">
 
     <ul class="left nav navbar-nav navbar-left">
-      <li>
+      <li *ngIf="isAuth()">
         <a class="btn" routerLink="startpage">Start</a>
       </li>
-      <li>
+      <li *ngIf="isAuth()">
         <a class="btn" routerLink="game">Gra</a>
       </li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <li *ngIf="!isAuth()" class="active">
-        <a class="btn" routerLink="loginpage">Login</a>
-      </li>
       <li *ngIf="isAuth()" class="active">
         <a class="btn" (click)="onLogout()">Logout</a>
       </li>

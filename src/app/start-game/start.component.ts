@@ -5,19 +5,26 @@ import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-start-game',
-  templateUrl: './start-game.component.html',
-  styleUrls: ['./start-game.component.css']
+  templateUrl: './start.component.html',
+  styleUrls: ['./start.component.css']
 })
 export class StartGameComponent implements OnInit {
   private subscription:Subscription;
 
   constructor(private authService:AuthService, private router:Router) {
+    console.log('constructor');
   }
 
   ngOnInit() {
+
+    $('#testId').fadeOut("slow").fadeIn("fast").fadeOut("slow");
+    console.log('ngOnInit');
+    
     this.subscription = this.authService.isAuthenticated().subscribe(authResp => {
-        if (!authResp)
+      if (!authResp) {
           this.router.navigate(['loginpage']);
+
+        }
       }
     );
   }

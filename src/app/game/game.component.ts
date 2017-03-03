@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
 import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
-
+declare  var $:any;
 
 @Component({
   selector: 'app-game',
@@ -14,6 +14,8 @@ export class GameComponent implements OnInit {
   private subscription:Subscription;
 
   constructor(private authService:AuthService, private router:Router) {
+    $('testId').fadeIn("fast");
+
   }
 
   ngOnInit() {
