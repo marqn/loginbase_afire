@@ -11,13 +11,17 @@ declare var $:any;
 export class AppComponent implements OnInit {
   private subscription:Subscription;
   public hasAuth:any;
+  public email:string;
 
   constructor(private authService:AuthService) {
   }
 
   ngOnInit() {
     this.subscription = this.authService.isAuthenticated().subscribe(authResp => {
-        this.hasAuth = authResp;
+        if (authResp) {
+          this.hasAuth = authResp;
+          this.email = authResp.auth.email;
+        }
       }
     );
 

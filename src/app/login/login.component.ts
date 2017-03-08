@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.authService.isAuthenticated().subscribe(authResp => {
-        console.log('login component: ', authResp);
         this.hasAuth = authResp;
         if (!authResp)
           this.router.navigate(['loginpage']);
@@ -32,8 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   public manualLogin():void {
     this.authService.loginUser(this.login_email, this.login_password)

@@ -12,18 +12,14 @@ export class StartGameComponent implements OnInit {
   private subscription:Subscription;
 
   constructor(private authService:AuthService, private router:Router) {
-    console.log('constructor');
   }
 
   ngOnInit() {
-
     $('#testId').fadeOut("slow").fadeIn("fast").fadeOut("slow");
-    console.log('ngOnInit');
-    
-    this.subscription = this.authService.isAuthenticated().subscribe(authResp => {
-      if (!authResp) {
-          this.router.navigate(['loginpage']);
 
+    this.subscription = this.authService.isAuthenticated().subscribe(authResp => {
+        if (!authResp) {
+          this.router.navigate(['loginpage']);
         }
       }
     );

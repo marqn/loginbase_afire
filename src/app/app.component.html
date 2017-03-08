@@ -10,14 +10,19 @@
       </li>
     </ul>
 
-    <ul class="nav navbar-nav navbar-right">
-      <li *ngIf="isAuth()" class="active">
-        <a class="btn" (click)="onLogout()">Logout</a>
-      </li>
-    </ul>
 
     <ul class="nav navbar-nav navbar-default">
       <li><a id="navbar-logo" style="cursor: none">The Game</a></li>
+    </ul>
+
+
+    <ul class="nav navbar-nav navbar-right" *ngIf="isAuth()">
+      <li >
+        <a>{{email}}</a>
+      </li>
+      <li>
+        <a class="btn" (click)="onLogout()">Logout</a>
+      </li>
     </ul>
 
   </div>
